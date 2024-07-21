@@ -1,0 +1,7 @@
+{
+    "USERNAME" : "acore",
+    "PASSWORD" : "password",
+    "SERVER_IP" : "127.0.01",
+    "MYSQL_PORT" : 3306
+
+}
