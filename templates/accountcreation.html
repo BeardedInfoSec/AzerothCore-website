@@ -1,27 +1,80 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Azerothcore Account Creator</title>
-</head>
-<body>
-    <h1>Account Creation</h1>
-    <form>
-        <label for="accountName">Account Name:</label><br>
-        <input type="text" id="accountName" maxlength="20"><br>
-        <label for="email">Email Address:</label><br>
-        <input type="email" id="email"><br>
-        <label for="passwd1">Password:</label><br>
-        <input type="password" id="passwd1"><br>
-        <label for="passwd2">Re-enter Password:</label><br>
-        <input type="password" id="passwd2"><br><br>
-        <select name="expansion" id="exp">
-            <option value="2">Wrath of the Lich King</option>
-            <option value="1">The Burning Crusade</option>
-            <option value="0">World of Warcraft (Classic)</option>
-        </select>
+{% extends "base.html" %}
+
+{% block content %}
+<div class="container">
+    <div class="heading">Create Account</div>
+    <form id="accountForm" class="form" onsubmit="event.preventDefault(); createAccount();">
+        <div class="input-field">
+            <label for="accountName">Account Name</label>
+            <input type="text" id="accountName" maxlength="20" required autocomplete="off" />
+        </div>
+        <div class="input-field">
+            <label for="email">Email Address</label>
+            <input type="email" id="email" required autocomplete="off" />
+        </div>
+        <div class="input-field">
+            <label for="passwd1">Password</label>
+            <input type="password" id="passwd1" minlength="8" required autocomplete="off" />
+        </div>
+        <div class="input-field">
+            <label for="passwd2">Re-enter Password</label>
+            <input type="password" id="passwd2" minlength="8" required autocomplete="off" />
+        </div>
+        <div class="input-field">
+            <label for="exp">Expansion</label>
+            <select name="expansion" id="exp" required>
+                <option value="2">Wrath of the Lich King</option>
+                <option value="1">The Burning Crusade</option>
+                <option value="0">World of Warcraft (Classic)</option>
+            </select>
+        </div>
+        <div class="btn-container">
+            <button type="submit" class="btn">Create Account</button>
+        </div>
     </form>
-    
-</body>
-</html>
+    <p id="result"></p>
+</div>
+<script>
+    function createAccount() {
+        const accountName = document.getElementById('accountName').value;
+        const email = document.getElementById('email').value;
+        const passwd1 = document.getElementById('passwd1').value;
+        const passwd2 = document.getElementById('passwd2').value;
+        const expansion = document.getElementById('exp').value;
+
+        if (passwd1.length < 8) {
+            document.getElementById('result').innerText = 'Password must be at least 8 characters long.';
+            return;
+        }
+
+        if (passwd1 !== passwd2) {
+            document.getElementById('result').innerText = 'Passwords do not match.';
+            return;
+        }
+
+        fetch('/create_account', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({
+                accountName: accountName,
+                email: email,
+                passwd1: passwd1,
+                passwd2: passwd2,
+                expansion: expansion
+            }),
+        })
+        .then(response => response.json())
+        .then(data => {
+            document.getElementById('result').innerText = data.message;
+            if (data.message === "Account created successfully!") {
+                document.getElementById('accountForm').reset();
+            }
+        })
+        .catch((error) => {
+            console.error('Error:', error);
+        });
+    }
+</script>
+{% endblock %}

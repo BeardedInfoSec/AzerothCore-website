@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Azerothcore</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: url("{{ url_for('static', filename='../static/images/background.png') }}") no-repeat center center fixed;
+            background-size: cover;
+            margin: 0;
+            padding: 0;
+        }
+        nav ul {
+            list-style-type: none;
+            padding: 0;
+            background-color: rgba(52, 58, 64, 0.8);
+            margin: 0;
+            display: flex;
+            justify-content: flex-end; /* Aligns links to the right */
+        }
+        nav ul li {
+            margin: 0;
+        }
+        nav ul li a {
+            display: block;
+            color: white;
+            text-align: center;
+            padding: 14px 20px;
+            text-decoration: none;
+        }
+        nav ul li a:hover {
+            background-color: #495057;
+        }
+        .content {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: calc(100vh - 60px); /* Reduced the height to decrease top space */
+            padding: 20px;
+        }
+        .container {
+            border: solid 1px rgba(52, 58, 64, 0.8);
+            padding: 20px;
+            border-radius: 20px;
+            background-color: rgba(52, 58, 64, 0.8); /* Match with navigation bar */
+            max-width: 500px;
+            width: 100%;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+        .heading {
+            font-size: 1.5rem;
+            margin-bottom: 20px;
+            font-weight: bolder;
+            color: white;
+        }
+        .form {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+        .form input, .form select {
+            padding: 10px;
+            font-size: 1rem;
+            border-radius: 5px;
+            border: 1px solid #ced4da;
+            width: 100%;
+            box-sizing: border-box; /* Ensure the select and input are the same width */
+            background-color: rgba(255, 255, 255, 0.9); /* Light background for inputs */
+        }
+        .form label {
+            color: white;
+            text-align: left;
+            display: block;
+            margin-bottom: 5px;
+        }
+        .btn {
+            padding: 10px;
+            font-size: 1rem;
+            text-transform: uppercase;
+            font-weight: bold;
+            color: white;
+            background-color: #007bff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+            display: inline-block;
+            margin-top: 10px;
+            width: 100%;
+            box-sizing: border-box;
+        }
+        .btn:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <ul>
+            <li><a href="{{ url_for('home') }}">Account Creation</a></li>
+            <li><a href="{{ url_for('reset_password') }}">Reset Password</a></li>
+        </ul>
+    </nav>
+    <div class="content">
+        {% block content %}{% endblock %}
+    </div>
+</body>
+</html>

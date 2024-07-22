@@ -1,7 +1,10 @@
 {
     "USERNAME" : "acore",
     "PASSWORD" : "password",
-    "SERVER_IP" : "127.0.01",
-    "MYSQL_PORT" : 3306
+    "SERVER_IP" : "127.0.0.1",
+    "MYSQL_PORT" : 3306,
+    "DATABASE" : "acore_auth",
+    "SMTP_EMAIL_ADDRESS" : "gmail_address",
+    "SMTP_EMAIL_PASSWORD" : "gmail_app_password"
 
 }
