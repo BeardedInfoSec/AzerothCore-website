@@ -19,8 +19,8 @@ This application allows users to create and manage accounts for the World of War
 1. **Clone the repository:**
 
     ```bash
-    git clone https://github.com/BeardedInfoSec/AzerothCore.git
-    cd AzerothCore
+    git clone https://github.com/BeardedInfoSec/AzerothCore-website.git
+    cd AzerothCore-website
     ```
 
 2. **Configure the application:**
@@ -65,6 +65,10 @@ To secure your application:
 - Open ports 80 (HTTP) and 443 (HTTPS) on your server.
 - Configure your firewall to allow traffic on these ports and point to your server's IP address or domain.
 - Obtain and install an SSL/TLS certificate to enable HTTPS.
+
+### Email Configuration
+
+- **Important**: The password reset functionality will not work without having the Gmail account configured, as it sends the reset link through email.
 
 ## Security Best Practices
 
