@@ -77,7 +77,7 @@ To secure your application:
 
 ## Contact
 
-For any issues or questions, please contact [your_email@example.com].
+For any issues or questions, please contact [thesoargoat@gmail.com].
 
 ---
 
