@@ -81,7 +81,7 @@ To secure your application:
 
 ## Contact
 
-For any issues or questions, please contact [thesoargoat@gmail.com].
+For any issues or questions, please contact [abarbas19@gmail.com].
 
 ---
 
